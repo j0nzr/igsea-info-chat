@@ -1,5 +1,6 @@
 import socket
 import threading
+import random
 
 """
 Starting with default Socket-Operations
@@ -54,6 +55,18 @@ def handle_client(client):
         message = client.recv(1024)
         if message != string2bytes("{quit}"):
             sendToAll(message, name+":")
+            
+            """
+            Some NSA-Eastereggs :D
+            """
+            rand = random.randint(0,50)
+            if(rand == 1):
+                sendToAll("Watch your Words. We're listening.", "NSA: ")
+            elif(rand == 2):
+                sendToAll("Aha. Intressting!", "NSA: ")
+            elif(rand == 3):
+                sendToAll("We're not here. Keep talking", "NSA: ")  
+                
         else:
             client.send(string2bytes("{quit}"))
             client.close()
